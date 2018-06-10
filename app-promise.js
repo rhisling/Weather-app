@@ -4,7 +4,7 @@ const axios = require("axios");
 const argv = yargs
   .option({
     a: {
-      demandOption: true,
+      demandOption: false,
       alias: "address",
       describe: "Address to fetch weather for",
       string: true
@@ -12,6 +12,7 @@ const argv = yargs
   })
   .help()
   .alias("help", "h").argv;
+if (!Object.keys(argv).includes("a")) argv["a"] = "Oakland California";
 //console.log(argv);
 
 const encodedAddress = encodeURIComponent(argv.a);
